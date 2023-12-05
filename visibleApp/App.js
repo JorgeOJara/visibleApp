@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button, View, Text, ImageBackground, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import backgroundImage from './annie-spratt-wuc-KEIBrdE-unsplash.jpg';
+import backgroundImage from './annie-spratt-wuc-KEIBrdE-unsplash.png';
 
 // Welcome Screen
 function WelcomeScreen({ navigation }) {
