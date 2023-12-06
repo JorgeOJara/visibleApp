@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, View, Text, ImageBackground, StyleSheet, TouchableOpacity, Pressable } from 'react-native';
+import { Button, View, Text, ImageBackground, StyleSheet, Pressable } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import backgroundImage from './annie-spratt-wuc-KEIBrdE-unsplash.png';
