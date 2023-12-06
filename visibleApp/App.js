@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, View, Text, ImageBackground, StyleSheet } from 'react-native';
+import { Button, View, Text, ImageBackground, StyleSheet, TouchableOpacity, Pressable } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import backgroundImage from './annie-spratt-wuc-KEIBrdE-unsplash.png';
@@ -10,12 +10,12 @@ function WelcomeScreen({ navigation }) {
     <View style={styles.container}>
       <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
         <View style={styles.buttonContainer}>
-          <View style={styles.buttonWrapper}>
-            <Button title="Login" onPress={() => navigation.navigate('Login')} />
-          </View>
-          <View style={[styles.buttonWrapper, styles.secondButtonWrapper]}>
-            <Button title="Sign In" onPress={() => navigation.navigate('SignIn')} />
-          </View>
+            <Pressable style={styles.button} onPress={() => navigation.navigate('Login')}>
+              <Text style={styles.text}>{'Log In'}</Text>
+            </Pressable>
+            <Pressable style={styles.button} onPress={() => navigation.navigate('SignIn')}>
+              <Text style={styles.text}>{'Sign Up'}</Text>
+            </Pressable>
         </View>
       </ImageBackground>
     </View>
@@ -71,9 +71,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonContainer: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    width: '30%', 
+    backgroundColor: 'rgba(255, 255, 255, 0.90)',
     borderRadius: 10,
-    padding: 20,
+    paddingVertical: 15,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
@@ -81,18 +82,30 @@ const styles = StyleSheet.create({
     elevation: 5,
     alignItems: 'center',
   },
-  buttonWrapper: {
-    width: '80%', // Set the width of the button area
-    marginBottom: 15, // Space between buttons
-  },
-  secondButtonWrapper: {
-    marginTop: 15, // Additional top margin for the second button
-  },
   center: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
+  text: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
+  },
+
+  button: {
+    margin: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 10,
+    elevation: 3,
+    backgroundColor: '#1C2833',
+    width: '70%',
+  }
 });
 
 
