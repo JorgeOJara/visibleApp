@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Button, View, Text, ImageBackground, StyleSheet, Pressable } from 'react-native';
+import { View, Text, ImageBackground, StyleSheet, Pressable, TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import backgroundImage from './annie-spratt-wuc-KEIBrdE-unsplash.png';
+import {useForm, useController} from 'react-hook-form';
 
 // Welcome Screen
 function WelcomeScreen({ navigation }) {
@@ -13,7 +14,7 @@ function WelcomeScreen({ navigation }) {
             <Pressable style={styles.button} onPress={() => navigation.navigate('Login')}>
               <Text style={styles.text}>{'Log In'}</Text>
             </Pressable>
-            <Pressable style={styles.button} onPress={() => navigation.navigate('SignIn')}>
+            <Pressable style={styles.button} onPress={() => navigation.navigate('SignUp')}>
               <Text style={styles.text}>{'Sign Up'}</Text>
             </Pressable>
         </View>
@@ -32,11 +33,33 @@ function LoginScreen() {
 }
 
 // Sign In Screen
-function SignInScreen() {
+function SignUpScreen() {
+  const{signUp, handleSubmit} = useForm();
+  //const onSubmit = (data) => alert(JSON.stringify(data));
+  const Input = (name, signUp) =>{
+    const {field} = useController({
+      signUp,
+      defaultValue: '',
+      name,
+    })
+    return(
+    <TextInput
+      value={field.value}
+      onChangeText={field.onChange}
+      style={styles.text}
+    />
+    );
+  };
+
   return (
     <View style={styles.center}>
-      <Text>Sign In Screen</Text>
+      <Text style={styles.text}>Sign Up Screen</Text>
+      <Text style={styles.text}>First Name</Text>
+      <Input name="firstName" signUp={signUp}/>
+      <Text style={styles.text}>Last Name Name</Text>
+      <Input name="firstName" signUp={signUp}/>
     </View>
+
   );
 }
 
@@ -50,7 +73,7 @@ function App() {
       <Stack.Navigator initialRouteName="Welcome">
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="SignIn" component={SignInScreen} />
+        <Stack.Screen name="SignUp" component={SignUpScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -107,6 +130,5 @@ const styles = StyleSheet.create({
     width: '70%',
   }
 });
-
 
 export default App;
