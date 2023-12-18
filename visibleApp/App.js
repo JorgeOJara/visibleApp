@@ -112,7 +112,7 @@ function LoginScreen() {
         <Text style={styles.textLogin}>Email Address</Text>
         <TextInput
           style={styles.textInput}
-          placeholder="Email"
+          placeholder=""
           value={email}
           onChangeText={(text) => setEmail(text)}
           keyboardType="email-address"
@@ -120,7 +120,7 @@ function LoginScreen() {
         <Text style={styles.textLogin}>Password</Text>
         <TextInput
           style={styles.textInput}
-          placeholder="Password"
+          placeholder=""
           value={password}
           onChangeText={(text) => setPassword(text)}
           secureTextEntry
@@ -167,32 +167,32 @@ function SignUpScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.formContainer}>
-        <Text style={styles.text}>First Name</Text>
+        <Text style={styles.textLogin}>First Name</Text>
         <TextInput
           style={styles.textInput}
-          placeholder="First Name"
+          placeholder=""
           value={firstName}
           onChangeText={(text) => setFirstName(text)}
         />
-        <Text style={styles.text}>Last Name</Text>
+        <Text style={styles.textLogin}>Last Name</Text>
         <TextInput
           style={styles.textInput}
-          placeholder="Last Name"
+          placeholder=""
           value={lastName}
           onChangeText={(text) => setLastName(text)}
         />
-        <Text style={styles.text}>Email Address</Text>
+        <Text style={styles.textLogin}>Email Address</Text>
         <TextInput
           style={styles.textInput}
-          placeholder="Email"
+          placeholder=""
           value={email}
           onChangeText={(text) => setEmail(text)}
           keyboardType="email-address"
         />
-        <Text style={styles.text}>Password</Text>
+        <Text style={styles.textLogin}>Password</Text>
         <TextInput
           style={styles.textInput}
-          placeholder="Password"
+          placeholder=""
           value={password}
           onChangeText={(text) => setPassword(text)}
           secureTextEntry
@@ -228,8 +228,25 @@ function App() {
             headerTitleStyle: styles.headerTitleStyle,
           }}
         />
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="SignUp" component={SignUpScreen} />
+        <Stack.Screen 
+          name="Login" 
+          component={LoginScreen} 
+          options={{
+            title: "Login", // Set the title of the header
+            headerTintColor: "black",
+            headerTitleStyle: styles.headerTitleStyle,
+
+          }}
+        />
+        <Stack.Screen 
+          name="SignUp" 
+          component={SignUpScreen} 
+          options={{
+            title: "Sign Up", // Set the title of the header
+            headerTintColor: "black",
+            headerTitleStyle: styles.headerTitleStyle,
+          }}  
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -259,11 +276,11 @@ const styles = StyleSheet.create({
   },
 
   headerTitleStyle: {
-    fontSize: 25, // Set the font size of the header text
-    fontWeight: "bold", // You can also set the font weight if needed
-    textShadowColor: "rgba(240, 243, 244, 0.13)", // Shadow color
-    textShadowOffset: { width: 2, height: 2 }, // Shadow offset
-    textShadowRadius: 5, // Shadow radius
+    fontSize: 25, 
+    fontWeight: "bold", 
+    textShadowColor: "rgba(240, 243, 244, 0.13)", 
+    textShadowOffset: { width: 2, height: 2 }, 
+    textShadowRadius: 5,
   },
 
   backgroundImage: {
@@ -297,12 +314,12 @@ const styles = StyleSheet.create({
     color: "white",
   },
   textLogin: {
-    fontSize: 20,
-    lineHeight: 22,
+    fontSize: 18,
+    lineHeight: 20,
     fontWeight: "bold",
     letterSpacing: 0.5,
     color: "white",
-    paddingBottom: 5,
+    paddingBottom: 4,
     textShadowColor: "rgba(240, 243, 244, 0.13)", // Shadow color
     textShadowOffset: { width: 2, height: 2 }, // Shadow offset
     textShadowRadius: 5, // Shadow radius
@@ -315,8 +332,8 @@ const styles = StyleSheet.create({
     color: "black",
     borderWidth: 0.5,
     borderColor: "white",
-    marginBottom: 25,
-    padding: 8,
+    marginBottom: 20,
+    padding: 6,
     backgroundColor: "white",
     width: "75%",
   },
