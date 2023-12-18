@@ -1,24 +1,27 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 
-
-// Login Screen
-const LoginScreen = ()=> {
+// Sign Up Screen
+const SignUpScreen = ({ navigation }) => {
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState("");
     const handleLogin = async () => {
       try {
         // Perform signup logic with form data (e.g., make an API call)
         setIsLoading(true);
-        const obj = { email, password };
-        //REMOVE COMMENT!!-> //var postData = await postData(url, obj);
-        console.log("Logging in:", obj);
+        const obj = { firstName, lastName, email, password };
+  
+        //REMOVE COMMENT!!-> var postData = await postData(url, obj);
+  
+        console.log("Signing up:", obj);
         // Navigate to another screen after successful signup
       } catch (error) {
-        console.error("Error logging in:", error.message);
-        setError("Login failed. Please try again.");
+        console.error("Error signing up:", error.message);
+        setError("Sign up failed. Please try again.");
       } finally {
         setIsLoading(false);
       }
@@ -27,6 +30,20 @@ const LoginScreen = ()=> {
     return (
       <View style={styles.container}>
         <View style={styles.formContainer}>
+          <Text style={styles.textLogin}>First Name</Text>
+          <TextInput
+            style={styles.textInput}
+            placeholder=""
+            value={firstName}
+            onChangeText={(text) => setFirstName(text)}
+          />
+          <Text style={styles.textLogin}>Last Name</Text>
+          <TextInput
+            style={styles.textInput}
+            placeholder=""
+            value={lastName}
+            onChangeText={(text) => setLastName(text)}
+          />
           <Text style={styles.textLogin}>Email Address</Text>
           <TextInput
             style={styles.textInput}
@@ -43,10 +60,10 @@ const LoginScreen = ()=> {
             onChangeText={(text) => setPassword(text)}
             secureTextEntry
           />
-          <View style={styles.Button}>
-            {error ? <Text>{error}</Text> : null}
+          <View style={styles.signupButton}>
+            {error ? <Text style={styles.errorText}>{error}</Text> : null}
             <Button
-              title={isLoading ? "Logging In..." : "Login"}
+              title={isLoading ? "Signing Up..." : "Sign Up"}
               onPress={handleLogin}
               disabled={isLoading}
             />
@@ -55,7 +72,8 @@ const LoginScreen = ()=> {
       </View>
     );
   }
-//Data
+
+  //Data
 async function postData(url, obj) {
     try {
       const response = await axios.post(url, obj);
@@ -105,10 +123,10 @@ const styles = StyleSheet.create({
         paddingLeft: "20%",
       },
 
-      loginButton: {
+      signupButton: {
         paddingVertical: 15,
         width: "75%",
       },
 });
 
-  export default LoginScreen;
+export default SignUpScreen

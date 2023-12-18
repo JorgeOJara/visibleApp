@@ -4,14 +4,13 @@ import {
   Text,
   ImageBackground,
   StyleSheet,
-  Pressable,
-  Button,
-  TextInput,
+  Pressable
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import backgroundImage from "./annie-spratt-wuc-KEIBrdE-unsplash.png";
-import LoginScreen from '../visibleApp/Screens/LoginScreen'; // Adjust the path accordingly
+import LoginScreen from "../visibleApp/Screens/LoginScreen"; // Adjust the path accordingly
+import SignUpScreen from "../visibleApp/Screens/signupScreen";
 
 // Welcome Screen
 function WelcomeScreen({ navigation }) {
@@ -51,7 +50,7 @@ function WelcomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
-        <View style={styles.buttonContainer}>
+        <View style={styles.welcomeContainer}>
           <Pressable
             style={loginButtonStyle}
             onPress={() => navigation.navigate("Login")}
@@ -85,77 +84,7 @@ async function postData(url, obj) {
   }
 }
 
-// Sign Up Screen
-function SignUpScreen({ navigation }) {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
-  const handleLogin = async () => {
-    try {
-      // Perform signup logic with form data (e.g., make an API call)
-      setIsLoading(true);
-      const obj = { firstName, lastName, email, password };
 
-      //REMOVE COMMENT!!-> var postData = await postData(url, obj);
-
-      console.log("Signing up:", obj);
-      // Navigate to another screen after successful signup
-    } catch (error) {
-      console.error("Error signing up:", error.message);
-      setError("Sign up failed. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  return (
-    <View style={styles.container}>
-      <View style={styles.formContainer}>
-        <Text style={styles.textLogin}>First Name</Text>
-        <TextInput
-          style={styles.textInput}
-          placeholder=""
-          value={firstName}
-          onChangeText={(text) => setFirstName(text)}
-        />
-        <Text style={styles.textLogin}>Last Name</Text>
-        <TextInput
-          style={styles.textInput}
-          placeholder=""
-          value={lastName}
-          onChangeText={(text) => setLastName(text)}
-        />
-        <Text style={styles.textLogin}>Email Address</Text>
-        <TextInput
-          style={styles.textInput}
-          placeholder=""
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-          keyboardType="email-address"
-        />
-        <Text style={styles.textLogin}>Password</Text>
-        <TextInput
-          style={styles.textInput}
-          placeholder=""
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-          secureTextEntry
-        />
-        <View style={styles.signUpButton}>
-          {error ? <Text style={styles.errorText}>{error}</Text> : null}
-          <Button
-            title={isLoading ? "Signing Up..." : "Sign Up"}
-            onPress={handleLogin}
-            disabled={isLoading}
-          />
-        </View>
-      </View>
-    </View>
-  );
-}
 
 // Stack Navigator
 const Stack = createStackNavigator();
@@ -237,7 +166,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  buttonContainer: {
+  welcomeContainer: {
     paddingVertical: 15,
     width: "80%",
     marginLeft: "20%",
@@ -247,7 +176,6 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     width: "75%",
   },
-
   center: {
     flex: 1,
     justifyContent: "center",
