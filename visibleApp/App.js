@@ -11,6 +11,7 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import backgroundImage from "./annie-spratt-wuc-KEIBrdE-unsplash.png";
+import LoginScreen from '../visibleApp/Screens/LoginScreen'; // Adjust the path accordingly
 
 // Welcome Screen
 function WelcomeScreen({ navigation }) {
@@ -82,60 +83,6 @@ async function postData(url, obj) {
   } catch (error) {
     console.error("Error in POST request:", error);
   }
-}
-
-// Login Screen
-function LoginScreen() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const handleLogin = async () => {
-    try {
-      // Perform signup logic with form data (e.g., make an API call)
-      setIsLoading(true);
-      const obj = { email, password };
-      //var postData = await postData(url, obj);
-      console.log("Logging in:", obj);
-      // Navigate to another screen after successful signup
-    } catch (error) {
-      console.error("Error logging in:", error.message);
-      setError("Login failed. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  return (
-    <View style={styles.container}>
-      <View style={styles.formContainer}>
-        <Text style={styles.textLogin}>Email Address</Text>
-        <TextInput
-          style={styles.textInput}
-          placeholder=""
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-          keyboardType="email-address"
-        />
-        <Text style={styles.textLogin}>Password</Text>
-        <TextInput
-          style={styles.textInput}
-          placeholder=""
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-          secureTextEntry
-        />
-        <View style={styles.signUpButton}>
-          {error ? <Text style={styles.errorText}>{error}</Text> : null}
-          <Button
-            title={isLoading ? "Logging In..." : "Login"}
-            onPress={handleLogin}
-            disabled={isLoading}
-          />
-        </View>
-      </View>
-    </View>
-  );
 }
 
 // Sign Up Screen
