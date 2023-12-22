@@ -6,6 +6,7 @@ import {
   Button,
   StyleSheet,
   ScrollView,
+  KeyboardAvoidingView,
 } from "react-native";
 
 // Login Screen
@@ -31,7 +32,15 @@ const LoginScreen = () => {
   };
 
   return (
-      <ScrollView contentContainerStyle={styles.scrollContainer} keyboardDismissMode="on-drag">
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      <ScrollView
+        style={styles.scrollContainer}
+        contentContainerStyle={styles.contentscrollContainer}
+        keyboardDismissMode="on-drag"
+      >
         <View style={styles.formContainer}>
           <Text style={styles.textLogin}>Email Address</Text>
           <TextInput
@@ -59,6 +68,7 @@ const LoginScreen = () => {
           </View>
         </View>
       </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 //Data
@@ -73,6 +83,12 @@ async function postData(url, obj) {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
   textLogin: {
     fontSize: 18,
     lineHeight: 20,
@@ -110,10 +126,12 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     width: "75%",
   },
+  contentscrollContainer: {
+    flexGrow: 1,
+  },
   scrollContainer: {
-    flex: 1,
-  }
-
+    width: "100%",
+  },
 });
 
 export default LoginScreen;

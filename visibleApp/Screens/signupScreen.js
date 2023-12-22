@@ -6,6 +6,7 @@ import {
   Button,
   StyleSheet,
   ScrollView,
+  KeyboardAvoidingView,
 } from "react-native";
 
 // Sign Up Screen
@@ -35,7 +36,12 @@ const SignUpScreen = ({ navigation }) => {
   };
 
   return (
-      <ScrollView contentContainerStyle={styles.scrollContainer} keyboardDismissMode="on-drag">
+    <KeyboardAvoidingView style={styles.container}>
+      <ScrollView
+        style={styles.scrollContainer}
+        contentContainerStyle={styles.contentscrollContainer}
+        keyboardDismissMode="on-drag"
+      >
         <View style={styles.formContainer}>
           <Text style={styles.textLogin}>First Name</Text>
           <TextInput
@@ -77,6 +83,7 @@ const SignUpScreen = ({ navigation }) => {
           </View>
         </View>
       </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -134,10 +141,13 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     width: "75%",
   },
-  scrollContainer: {
-    flex: 1,
-  }
 
+  contentscrollContainer: {
+    flexGrow: 1,
+  },
+  scrollContainer: {
+    width: "100%",
+  },
 });
 
 export default SignUpScreen;
