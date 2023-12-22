@@ -41,7 +41,7 @@ function App() {
           component={LoginScreen}
           options={{
             title: "Login",
-            headerTintColor: "black",
+            headerTintColor: "black", 
             headerTitleStyle: styles.headerTitleStyle,
           }}
         />
@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
     height: 90,
   },
-
   headerTitleStyle: {
     fontSize: 25,
     fontWeight: "bold",
@@ -76,7 +75,6 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: 2, height: 2 },
     textShadowRadius: 5,
   },
-  
 });
 
 export default App;

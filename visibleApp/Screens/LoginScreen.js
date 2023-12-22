@@ -1,31 +1,38 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
-
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  StyleSheet,
+  ScrollView,
+} from "react-native";
 
 // Login Screen
-const LoginScreen = ()=> {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
-    const handleLogin = async () => {
-      try {
-        // Perform signup logic with form data (e.g., make an API call)
-        setIsLoading(true);
-        const obj = { email, password };
-        //REMOVE COMMENT!!-> //var postData = await postData(url, obj);
-        console.log("Logging in:", obj);
-        // Navigate to another screen after successful signup
-      } catch (error) {
-        console.error("Error logging in:", error.message);
-        setError("Login failed. Please try again.");
-      } finally {
-        setIsLoading(false);
-      }
-    };
-  
-    return (
-      <View style={styles.container}>
+const LoginScreen = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const handleLogin = async () => {
+    try {
+      // Perform signup logic with form data (e.g., make an API call)
+      setIsLoading(true);
+      const obj = { email, password };
+      //REMOVE COMMENT!!-> //var postData = await postData(url, obj);
+      console.log("Logging in:", obj);
+      // Navigate to another screen after successful signup
+    } catch (error) {
+      console.error("Error logging in:", error.message);
+      setError("Login failed. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <ScrollView>
         <View style={styles.formContainer}>
           <Text style={styles.textLogin}>Email Address</Text>
           <TextInput
@@ -52,63 +59,64 @@ const LoginScreen = ()=> {
             />
           </View>
         </View>
-      </View>
-    );
-  }
+      </ScrollView>
+    </View>
+  );
+};
 //Data
 async function postData(url, obj) {
-    try {
-      const response = await axios.post(url, obj);
-      console.log(response.data);
-      return response.data;
-    } catch (error) {
-      console.error("Error in POST request:", error);
-    }
+  try {
+    const response = await axios.post(url, obj);
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error in POST request:", error);
   }
+}
 
 const styles = StyleSheet.create({
-    textLogin: {
-        fontSize: 18,
-        lineHeight: 20,
-        fontWeight: "bold",
-        letterSpacing: 0.5,
-        color: "white",
-        paddingBottom: 4,
-        textShadowColor: "rgba(240, 243, 244, 0.13)", 
-        textShadowOffset: { width: 2, height: 2 }, 
-        textShadowRadius: 5,
-      },
-    
-      textInput: {
-        fontSize: 12,
-        lineHeight: 15,
-        letterSpacing: 0.25,
-        color: "black",
-        borderWidth: 0.5,
-        borderColor: "white",
-        marginBottom: 20,
-        padding: 6,
-        backgroundColor: "white",
-        width: "75%",
-      },
-      container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      },
-      formContainer: {
-        flex: 2,
-        justifyContent: "center",
-        alignItems: "flex-start",
-        backgroundColor: "black",
-        width: "100%",
-        paddingLeft: "20%",
-      },
+  textLogin: {
+    fontSize: 18,
+    lineHeight: 20,
+    fontWeight: "bold",
+    letterSpacing: 0.5,
+    color: "white",
+    paddingBottom: 4,
+    textShadowColor: "rgba(240, 243, 244, 0.13)",
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 5,
+  },
 
-      loginButton: {
-        paddingVertical: 15,
-        width: "75%",
-      },
+  textInput: {
+    fontSize: 12,
+    lineHeight: 15,
+    letterSpacing: 0.25,
+    color: "black",
+    borderWidth: 0.5,
+    borderColor: "white",
+    marginBottom: 20,
+    padding: 6,
+    backgroundColor: "white",
+    width: "75%",
+  },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  formContainer: {
+    flex: 2,
+    justifyContent: "center",
+    alignItems: "flex-start",
+    backgroundColor: "black",
+    width: "100%",
+    paddingLeft: "20%",
+  },
+
+  loginButton: {
+    paddingVertical: 15,
+    width: "75%",
+  },
 });
 
-  export default LoginScreen;
+export default LoginScreen;
