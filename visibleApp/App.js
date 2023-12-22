@@ -30,10 +30,10 @@ function App() {
           name="Welcome"
           component={WelcomeScreen}
           options={{
-            title: "Visible App",
-            headerStyle: styles.headerStyle,
+            title: "Visible",
+            headerStyle: styles.welcomeHeaderStyle,
             headerTintColor: "white",
-            headerTitleStyle: styles.headerTitleStyle,
+            headerTitleStyle: styles.welcomeTitleStyle,
           }}
         />
         <Stack.Screen
@@ -61,20 +61,23 @@ function App() {
 
 // Styles
 const styles = StyleSheet.create({
-  headerStyle: {
-    backgroundColor: "black",
+  welcomeHeaderStyle: {
+    backgroundColor: "#01579B",
     shadowColor: "#000",
     borderBottomColor: "#2c3e50",
     borderBottomWidth: 0.5,
-    height: 90,
+    height: 100,
   },
-  headerTitleStyle: {
-    fontSize: 25,
+  welcomeTitleStyle: {
+    fontSize: 40,
     fontWeight: "bold",
     textShadowColor: "rgba(240, 243, 244, 0.13)",
     textShadowOffset: { width: 2, height: 2 },
     textShadowRadius: 5,
   },
+
+    
+
 });
 
 export default App;

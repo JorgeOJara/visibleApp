@@ -28,14 +28,14 @@ const WelcomeScreen = ({ navigation }) => {
       ...styles.welcomeButtonContainer,
       backgroundColor: isLoginPressed
         ? "rgba(67,70,75, 0.95)"
-        : "rgba(0, 0, 0, 0.90)",
+        : "rgba(33, 33, 33, 99)",
     };
   
     const signUpButtonStyle = {
       ...styles.welcomeButtonContainer,
       backgroundColor: isSignUpPressed
         ? "rgba(67,70,75, 0.95)"
-        : "rgba(0, 0, 0, 0.90)",
+        : "rgba(33, 33, 33, 99)",
     };
   
     return (
@@ -89,7 +89,7 @@ const WelcomeScreen = ({ navigation }) => {
         paddingHorizontal: 32,
         borderRadius: 10,
         elevation: 3,
-        backgroundColor: "black",
+        backgroundColor: "#212121",
         width: "70%",
         shadowColor: "white",
         shadowRadius: 3,
