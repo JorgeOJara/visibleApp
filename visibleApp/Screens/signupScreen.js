@@ -100,8 +100,8 @@ async function postData(url, obj) {
 
 const styles = StyleSheet.create({
   textLogin: {
-    fontSize: 18,
-    lineHeight: 20,
+    fontSize: 20,
+    lineHeight: 22,
     fontWeight: "bold",
     letterSpacing: 0.5,
     color: "white",
@@ -112,15 +112,18 @@ const styles = StyleSheet.create({
   },
 
   textInput: {
-    fontSize: 12,
+    fontSize: 14,
     lineHeight: 15,
     letterSpacing: 0.25,
     color: "black",
     borderWidth: 0.5,
-    borderColor: "white",
+    borderBottomColor: "white",
+    borderTopColor: "#212121",
+    borderRightColor: "#212121",
+    borderLeftColor: "#212121",
     marginBottom: 20,
     padding: 6,
-    backgroundColor: "white",
+    backgroundColor: "#212121",
     width: "75%",
   },
   container: {
@@ -132,7 +135,7 @@ const styles = StyleSheet.create({
     flex: 2,
     justifyContent: "center",
     alignItems: "flex-start",
-    backgroundColor: "#01579B",
+    backgroundColor: "#212121",
     width: "100%",
     paddingLeft: "20%",
   },
