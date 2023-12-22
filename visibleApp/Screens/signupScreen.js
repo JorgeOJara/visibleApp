@@ -8,6 +8,10 @@ import {
   ScrollView,
   KeyboardAvoidingView,
 } from "react-native";
+import axios from 'axios';
+
+
+
 
 // Sign Up Screen
 const SignUpScreen = ({ navigation }) => {
@@ -24,6 +28,7 @@ const SignUpScreen = ({ navigation }) => {
       const obj = { firstName, lastName, email, password };
 
       //REMOVE COMMENT!!-> var postData = await postData(url, obj);
+       await postData("http://174.138.62.28:3000/signup",obj);
 
       console.log("Signing up:", obj);
       // Navigate to another screen after successful signup
