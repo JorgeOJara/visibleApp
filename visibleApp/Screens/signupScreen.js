@@ -35,8 +35,7 @@ const SignUpScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <ScrollView>
+      <ScrollView contentContainerStyle={styles.scrollContainer} keyboardDismissMode="on-drag">
         <View style={styles.formContainer}>
           <Text style={styles.textLogin}>First Name</Text>
           <TextInput
@@ -78,7 +77,6 @@ const SignUpScreen = ({ navigation }) => {
           </View>
         </View>
       </ScrollView>
-    </View>
   );
 };
 
@@ -136,6 +134,10 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     width: "75%",
   },
+  scrollContainer: {
+    flex: 1,
+  }
+
 });
 
 export default SignUpScreen;

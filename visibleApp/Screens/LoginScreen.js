@@ -31,8 +31,7 @@ const LoginScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <ScrollView>
+      <ScrollView contentContainerStyle={styles.scrollContainer} keyboardDismissMode="on-drag">
         <View style={styles.formContainer}>
           <Text style={styles.textLogin}>Email Address</Text>
           <TextInput
@@ -50,7 +49,7 @@ const LoginScreen = () => {
             onChangeText={(text) => setPassword(text)}
             secureTextEntry
           />
-          <View style={styles.Button}>
+          <View style={styles.loginButton}>
             {error ? <Text>{error}</Text> : null}
             <Button
               title={isLoading ? "Logging In..." : "Login"}
@@ -60,7 +59,6 @@ const LoginScreen = () => {
           </View>
         </View>
       </ScrollView>
-    </View>
   );
 };
 //Data
@@ -99,11 +97,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     width: "75%",
   },
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
   formContainer: {
     flex: 2,
     justifyContent: "center",
@@ -117,6 +110,10 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     width: "75%",
   },
+  scrollContainer: {
+    flex: 1,
+  }
+
 });
 
 export default LoginScreen;
