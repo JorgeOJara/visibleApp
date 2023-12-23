@@ -3,7 +3,15 @@
     "name": "visibleApp",
     "slug": "visibleApp",
     "version": "1.0.0",
-    "assetBundlePatterns": ["**/*"]
-    
+    "assetBundlePatterns": ["**/*"],
+
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": "node_modules/@expo-google-fonts/dancing-script/DancingScript_400Regular.ttf"
+        }
+      ]
+    ]
   }
 }

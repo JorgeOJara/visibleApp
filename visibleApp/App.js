@@ -5,12 +5,22 @@ import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "../visibleApp/Screens/LoginScreen";
 import SignUpScreen from "../visibleApp/Screens/signupScreen";
 import WelcomeScreen from "./Screens/WelcomeScreen";
+import { useFonts, DancingScript_400Regular } from '@expo-google-fonts/dancing-script';
+
 
 // Stack Navigator
 const Stack = createStackNavigator();
 
 // App Component
 function App() {
+  let [fontsLoaded, fontError] = useFonts({
+    DancingScript_400Regular,
+  });
+
+  if (!fontsLoaded && !fontError) {
+    return null;
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Welcome">
@@ -60,6 +70,7 @@ const styles = StyleSheet.create({
   },
   welcomeTitleStyle: {
     fontSize: 36,
+    fontFamily: "DancingScript_400Regular",
     textShadowColor: "rgba(240, 243, 244, 0.13)",
     textShadowOffset: { width: 2, height: 2 },
     textShadowRadius: 5,
