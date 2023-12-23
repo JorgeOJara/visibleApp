@@ -7,10 +7,26 @@ import {
   StyleSheet,
   ScrollView,
   KeyboardAvoidingView,
+  Pressable
 } from "react-native";
 
 // Login Screen
 const LoginScreen = () => {
+  const [isLoginPressed, setLoginPressed] = useState(false);
+  const loginPressIn = () => {
+    setLoginPressed(true);
+  };
+  const loginPressOut = () => {
+    setLoginPressed(false);
+  };
+
+  const loginButtonStyle = {
+    ...styles.welcomeButtonContainer,
+    backgroundColor: isLoginPressed
+      ? "rgba(117, 117, 117, 0.95)"
+      : "rgba(25, 118, 210, 99)",
+  };
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -19,13 +35,15 @@ const LoginScreen = () => {
     try {
       // Perform signup logic with form data (e.g., make an API call)
       setIsLoading(true);
-      const obj = { email, password };
-      //REMOVE COMMENT!!-> //var postData = await postData(url, obj);
-      console.log("Logging in:", obj);
+      const obj = {email, password };
+
+      var data = await postData("http://174.138.62.28:3000/signup",obj);
+
+      console.log("Logging In:", obj, data);
       // Navigate to another screen after successful signup
     } catch (error) {
-      console.error("Error logging in:", error.message);
-      setError("Login failed. Please try again.");
+      console.error("Error signing up:", error.message);
+      setError("Sign up failed. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -60,11 +78,17 @@ const LoginScreen = () => {
           />
           <View style={styles.loginButton}>
             {error ? <Text>{error}</Text> : null}
-            <Button
+            
+            <Pressable
               title={isLoading ? "Logging In..." : "Login"}
+              style={loginButtonStyle}
               onPress={handleLogin}
+              onPressIn={loginPressIn}
+              onPressOut={loginPressOut}
               disabled={isLoading}
-            />
+            >
+              <Text style={styles.textButton}>{"Submit"}</Text>
+            </Pressable>
           </View>
         </View>
       </ScrollView>
@@ -106,7 +130,7 @@ const styles = StyleSheet.create({
     lineHeight: 15,
     letterSpacing: 0.25,
     color: "white",
-    borderWidth: 1.5,
+    borderWidth: 1,
     borderBottomColor: "white",
     borderTopColor: "#263238",
     borderRightColor: "#263238",
@@ -126,8 +150,9 @@ const styles = StyleSheet.create({
   },
 
   loginButton: {
-    paddingVertical: 15,
-    width: "75%",
+    paddingVertical: 35,
+    width: "95%",
+
   },
   contentscrollContainer: {
     flexGrow: 1,
@@ -135,6 +160,28 @@ const styles = StyleSheet.create({
   scrollContainer: {
     width: "100%",
   },
+  welcomeButtonContainer: {
+    marginVertical: 15,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 10,
+    elevation: 3,
+    width: "80%",
+    shadowColor: "white",
+    shadowRadius: 3,
+    shadowOffset: { width: 4, height: 2 },
+  },
+
+  textButton: {
+    fontSize: 20,
+    lineHeight: 22,
+    fontWeight: "bold",
+    letterSpacing: 0.5,
+    color: "white",
+  },
+
 });
 
 export default LoginScreen;

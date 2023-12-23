@@ -1,18 +1,16 @@
 import React from "react";
-import {StyleSheet, Image} from "react-native";
+import {StyleSheet} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "../visibleApp/Screens/LoginScreen";
 import SignUpScreen from "../visibleApp/Screens/signupScreen";
 import WelcomeScreen from "./Screens/WelcomeScreen";
 
-
 // Stack Navigator
 const Stack = createStackNavigator();
 
 // App Component
 function App() {
-
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Welcome">

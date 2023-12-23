@@ -3,7 +3,7 @@ import {
   View,
   Text,
   TextInput,
-  Button,
+  Pressable,
   StyleSheet,
   ScrollView,
   KeyboardAvoidingView,
@@ -36,6 +36,21 @@ async function postData(url, obj) {
 
 // Sign Up Screen
 const SignUpScreen = ({ navigation }) => {
+  const [isSignUpPressed, setSignUpPressed] = useState(false);
+  const signupPressIn = () => {
+    setSignUpPressed(true);
+  };
+
+  const signupPressOut = () => {
+    setSignUpPressed(false);
+  };
+  const signUpButtonStyle = {
+    ...styles.welcomeButtonContainer,
+    backgroundColor: isSignUpPressed
+      ? "rgba(117, 117, 117, 0.95)"
+      : "rgba(25, 118, 210, 99)",
+  };
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -48,9 +63,9 @@ const SignUpScreen = ({ navigation }) => {
       setIsLoading(true);
       const obj = { firstName, lastName, email, password };
 
-      var postData = await postData("http://174.138.62.28:3000/signup",obj);
+      var data = await postData("http://174.138.62.28:3000/signup",obj);
 
-      console.log("Signing up:", obj);
+      console.log("Signing up:", obj, data);
       // Navigate to another screen after successful signup
     } catch (error) {
       console.error("Error signing up:", error.message);
@@ -100,11 +115,16 @@ const SignUpScreen = ({ navigation }) => {
           />
           <View style={styles.signupButton}>
             {error ? <Text style={styles.errorText}>{error}</Text> : null}
-            <Button
-              title={isLoading ? "Signing Up..." : "Sign Up"}
+            <Pressable
+              title={isLoading ? "Signing Up..." : "Signup"}
+              style={signUpButtonStyle}
               onPress={handleLogin}
+              onPressIn={signupPressIn}
+              onPressOut={signupPressOut}
               disabled={isLoading}
-            />
+            >
+              <Text style={styles.textButton}>{"Submit"}</Text>
+            </Pressable>
           </View>
         </View>
       </ScrollView>
@@ -129,7 +149,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 15,
     letterSpacing: 0.25,
-    color: "black",
+    color: "white",
     borderWidth: 0.5,
     borderBottomColor: "white",
     borderTopColor: "#263238",
@@ -156,7 +176,7 @@ const styles = StyleSheet.create({
 
   signupButton: {
     paddingVertical: 15,
-    width: "75%",
+    width: "95%",
   },
 
   contentscrollContainer: {
@@ -164,6 +184,28 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     width: "100%",
+  },
+
+  welcomeButtonContainer: {
+    marginVertical: 15,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 10,
+    elevation: 3,
+    width: "80%",
+    shadowColor: "white",
+    shadowRadius: 3,
+    shadowOffset: { width: 4, height: 2 },
+  },
+
+  textButton: {
+    fontSize: 20,
+    lineHeight: 22,
+    fontWeight: "bold",
+    letterSpacing: 0.5,
+    color: "white",
   },
 });
 

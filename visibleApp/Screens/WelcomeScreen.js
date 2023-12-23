@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, Pressable, Image } from "react-native";
 import VisibleImage from "../Designer.png";
 
+
 // Welcome Screen
 const WelcomeScreen = ({ navigation }) => {
+
   const [isLoginPressed, setLoginPressed] = useState(false);
   const [isSignUpPressed, setSignUpPressed] = useState(false);
 
