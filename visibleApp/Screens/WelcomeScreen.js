@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Pressable, Image } from "react-native";
 import VisibleImage from "../Designer.png";
+import * as Font from 'expo-font';
+
+
+async function loadFonts() {
+  await Font.loadAsync({
+    'philo': require('../ff/Philosopher-BoldItalic.ttf'),
+  });
+}
+
+loadFonts()
 
 
 // Welcome Screen
@@ -109,13 +119,15 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     letterSpacing: 0.5,
     color: "white",
+    fontFamily:'philo'
   },
   textVisible: {
     fontSize: 30,
-    lineHeight: 32,
+    lineHeight: 35,
     fontWeight: "bold",
     letterSpacing: 0.7,
     color: "white",
+    fontFamily:'philo'
   },
 });
 export default WelcomeScreen;

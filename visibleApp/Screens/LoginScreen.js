@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from 'axios';
+
 import {
   View,
   Text,
@@ -36,7 +38,7 @@ const LoginScreen = () => {
       setIsLoading(true);
       const obj = {email, password };
 
-      var data = await postData("http://174.138.62.28:3000/signup",obj);
+      var data = await postData("http://174.138.62.28:3000/login",obj);
 
       console.log("Logging In:", obj, data);
       // Navigate to another screen after successful signup

@@ -2,10 +2,14 @@ import React from "react";
 import {StyleSheet} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+
+///screens 
 import LoginScreen from "../visibleApp/Screens/LoginScreen";
 import SignUpScreen from "../visibleApp/Screens/signupScreen";
 import WelcomeScreen from "./Screens/WelcomeScreen";
 import { useFonts, DancingScript_400Regular } from '@expo-google-fonts/dancing-script';
+//// Ajax Tool
+import axios from 'axios';
 
 
 // Stack Navigator
@@ -74,6 +78,7 @@ const styles = StyleSheet.create({
     textShadowColor: "rgba(240, 243, 244, 0.13)",
     textShadowOffset: { width: 2, height: 2 },
     textShadowRadius: 5,
+    fontFamily:'philo'
   },
 
   loginHeaderStyle: {
