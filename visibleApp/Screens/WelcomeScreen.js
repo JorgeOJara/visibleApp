@@ -1,21 +1,11 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Pressable, Image } from "react-native";
 import VisibleImage from "../Designer.png";
-import * as Font from 'expo-font';
-
-
-async function loadFonts() {
-  await Font.loadAsync({
-    'philo': require('../ff/Philosopher-BoldItalic.ttf'),
-  });
-}
-
-loadFonts()
-
+import { useFonts, Inter_700Bold, Inter_600SemiBold } from '@expo-google-fonts/inter';
 
 // Welcome Screen
 const WelcomeScreen = ({ navigation }) => {
-
+  
   const [isLoginPressed, setLoginPressed] = useState(false);
   const [isSignUpPressed, setSignUpPressed] = useState(false);
 
@@ -49,6 +39,14 @@ const WelcomeScreen = ({ navigation }) => {
       : "rgba(25, 118, 210, 99)",
   };
 
+  let [fontsLoaded, fontError] = useFonts({
+    Inter_700Bold,Inter_600SemiBold
+  });
+
+  if (!fontsLoaded && !fontError) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -80,14 +78,14 @@ const WelcomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#263238",
   },
   imageContainer: {
-    flex: 1,
+    flex: 2,
     justifyContent: "center",
     alignItems: "center",
+    marginTop: '20%',
   },
   visibleImage: {
     width: 175,
@@ -95,17 +93,16 @@ const styles = StyleSheet.create({
   },
 
   welcomeContainer: {
-    flex: 1,
-    paddingVertical: 15,
+    flex: 2,
+    alignItems: "center",
     width: "80%",
-    marginLeft: "20%",
+    marginHorizontal: "20%",
   },
   welcomeButtonContainer: {
     margin: 10,
     alignItems: "center",
     justifyContent: "center",
     paddingVertical: 12,
-    paddingHorizontal: 32,
     borderRadius: 10,
     elevation: 3,
     width: "70%",
@@ -114,20 +111,19 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 4, height: 2 },
   },
   textWelcome: {
-    fontSize: 24,
-    lineHeight: 25,
-    fontWeight: "bold",
-    letterSpacing: 0.5,
+    fontSize: 25,
+    lineHeight: 26,
+    letterSpacing: 0.8,
     color: "white",
-    fontFamily:'philo'
+    fontFamily: "Inter_600SemiBold"
   },
   textVisible: {
-    fontSize: 30,
+    margin: 5,
+    fontSize: 35,
     lineHeight: 35,
-    fontWeight: "bold",
     letterSpacing: 0.7,
     color: "white",
-    fontFamily:'philo'
+    fontFamily: "Inter_700Bold"
   },
 });
 export default WelcomeScreen;

@@ -2,12 +2,13 @@ import React from "react";
 import {StyleSheet} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { useFonts, Inter_600SemiBold } from '@expo-google-fonts/inter';
+
 
 ///screens 
 import LoginScreen from "../visibleApp/Screens/LoginScreen";
 import SignUpScreen from "../visibleApp/Screens/signupScreen";
 import WelcomeScreen from "./Screens/WelcomeScreen";
-import { useFonts, DancingScript_400Regular } from '@expo-google-fonts/dancing-script';
 //// Ajax Tool
 import axios from 'axios';
 
@@ -18,7 +19,7 @@ const Stack = createStackNavigator();
 // App Component
 function App() {
   let [fontsLoaded, fontError] = useFonts({
-    DancingScript_400Regular,
+    Inter_600SemiBold,
   });
 
   if (!fontsLoaded && !fontError) {
@@ -32,10 +33,7 @@ function App() {
           name="Welcome"
           component={WelcomeScreen}
           options={{
-            title: "Welcome!",
-            headerStyle: styles.welcomeHeaderStyle,
-            headerTintColor: "white",
-            headerTitleStyle: styles.welcomeTitleStyle,
+            headerStyle: styles.welcomeHeaderStyle,            
           }}
         />
         <Stack.Screen
@@ -70,14 +68,14 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     borderBottomColor: "#2c3e50",
     borderBottomWidth: 0.5,
-    height: 100,
+    height: 31,
   },
   welcomeTitleStyle: {
-    fontSize: 36,
+    fontSize: 25,
     textShadowColor: "rgba(240, 243, 244, 0.13)",
     textShadowOffset: { width: 2, height: 2 },
     textShadowRadius: 5,
-    fontFamily:'philo'
+    fontFamily:"Inter_600SemiBold"
   },
 
   loginHeaderStyle: {
@@ -85,7 +83,7 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     borderBottomColor: "#2c3e50",
     borderBottomWidth: 0.5,
-    height: 90,
+    height: 80,
   },
   loginTitleStyle: {
     fontSize: 30,
