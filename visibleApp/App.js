@@ -74,7 +74,6 @@ const styles = StyleSheet.create({
   },
   welcomeTitleStyle: {
     fontSize: 36,
-    fontFamily: "DancingScript_400Regular",
     textShadowColor: "rgba(240, 243, 244, 0.13)",
     textShadowOffset: { width: 2, height: 2 },
     textShadowRadius: 5,
