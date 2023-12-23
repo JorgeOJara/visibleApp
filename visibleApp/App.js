@@ -70,28 +70,18 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
     height: 31,
   },
-  welcomeTitleStyle: {
-    fontSize: 25,
-    textShadowColor: "rgba(240, 243, 244, 0.13)",
-    textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 5,
-    fontFamily:"Inter_600SemiBold"
-  },
-
   loginHeaderStyle: {
     backgroundColor: "#1976D2",
-    shadowColor: "#000",
-    borderBottomColor: "#2c3e50",
-    borderBottomWidth: 0.5,
-    height: 80,
+    height: 90,
   },
   loginTitleStyle: {
     fontSize: 30,
+    fontFamily: "Inter_600SemiBold",
+    letterSpacing: 0.5,
     textShadowColor: "rgba(240, 243, 244, 0.13)",
     textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 5,
+    textShadowRadius: 4,
   },
-
   signupHeaderStyle: {
     backgroundColor: "#1976D2",
     shadowColor: "#000",
@@ -101,9 +91,11 @@ const styles = StyleSheet.create({
   },
   signupTitleStyle: {
     fontSize: 30,
+    fontFamily: "Inter_600SemiBold",
+    letterSpacing: 0.5,
     textShadowColor: "rgba(240, 243, 244, 0.13)",
     textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 5,
+    textShadowRadius: 4,
   },
 
 });

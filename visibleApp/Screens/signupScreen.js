@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import { postData } from './funfuntion/logHandler';
-
 import {
   View,
   Text,
@@ -11,6 +10,7 @@ import {
   ScrollView,
   KeyboardAvoidingView,
 } from "react-native";
+import { useFonts, Inter_700Bold, Inter_500Medium} from '@expo-google-fonts/inter';
 
 
 // Sign Up Screen
@@ -53,7 +53,12 @@ const SignUpScreen = ({ navigation }) => {
       setIsLoading(false);
     }
   };
-
+  let [fontsLoaded, fontError] = useFonts({
+    Inter_700Bold, Inter_500Medium
+  });
+  if (!fontsLoaded && !fontError) {
+    return null;
+  }
   return (
     <KeyboardAvoidingView style={styles.container}>
       <ScrollView
@@ -113,15 +118,14 @@ const SignUpScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   textLogin: {
-    fontSize: 20,
+    fontSize: 22,
+    fontFamily: "Inter_500Medium",
     lineHeight: 22,
-    fontWeight: "bold",
     letterSpacing: 0.5,
     color: "white",
     paddingBottom: 4,
-    textShadowColor: "rgba(240, 243, 244, 0.13)",
-    textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 5,
+    textShadowOffset: { width: 1, height: 2 },
+    textShadowRadius: 2,
   },
 
   textInput: {
@@ -174,15 +178,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     elevation: 3,
     width: "80%",
-    shadowColor: "white",
-    shadowRadius: 3,
-    shadowOffset: { width: 4, height: 2 },
+    shadowRadius: 2,
+    shadowOffset: { width: 2, height: 2 },
   },
 
   textButton: {
-    fontSize: 20,
-    lineHeight: 22,
-    fontWeight: "bold",
+    fontSize: 23,
+    fontFamily: "Inter_700Bold",
+    lineHeight: 23,
     letterSpacing: 0.5,
     color: "white",
   },

@@ -106,16 +106,18 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     elevation: 3,
     width: "70%",
-    shadowColor: "white",
-    shadowRadius: 3,
-    shadowOffset: { width: 4, height: 2 },
+    shadowRadius: 2,
+    shadowOffset: { width: 2, height: 2 },
   },
   textWelcome: {
     fontSize: 25,
     lineHeight: 26,
     letterSpacing: 0.8,
     color: "white",
-    fontFamily: "Inter_600SemiBold"
+    fontFamily: "Inter_600SemiBold",
+    textShadowColor: "white",
+    textShadowRadius: 2,
+
   },
   textVisible: {
     margin: 5,

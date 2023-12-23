@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from 'axios';
-
 import {
   View,
   Text,
@@ -10,6 +9,8 @@ import {
   KeyboardAvoidingView,
   Pressable
 } from "react-native";
+import { useFonts, Inter_700Bold, Inter_500Medium} from '@expo-google-fonts/inter';
+
 
 // Login Screen
 const LoginScreen = () => {
@@ -27,7 +28,7 @@ const LoginScreen = () => {
       ? "rgba(117, 117, 117, 0.95)"
       : "rgba(25, 118, 210, 99)",
   };
-
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -49,7 +50,13 @@ const LoginScreen = () => {
       setIsLoading(false);
     }
   };
-
+  let [fontsLoaded, fontError] = useFonts({
+    Inter_700Bold, Inter_500Medium
+  });
+  if (!fontsLoaded && !fontError) {
+    return null;
+  }
+  
   return (
     <KeyboardAvoidingView
       style={styles.container}
@@ -115,15 +122,14 @@ const styles = StyleSheet.create({
   },
 
   textLogin: {
-    fontSize: 20,
+    fontSize: 22,
+    fontFamily: "Inter_500Medium",
     lineHeight: 22,
-    fontWeight: "bold",
     letterSpacing: 0.5,
     color: "white",
     paddingBottom: 4,
-    textShadowColor: "rgba(240, 243, 244, 0.13)",
-    textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 5,
+    textShadowOffset: { width: 1, height: 2 },
+    textShadowRadius: 2,
   },
 
   textInput: {
@@ -170,15 +176,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     elevation: 3,
     width: "80%",
-    shadowColor: "white",
-    shadowRadius: 3,
-    shadowOffset: { width: 4, height: 2 },
+    shadowRadius: 2,
+    shadowOffset: { width: 2, height: 2 },
   },
 
   textButton: {
-    fontSize: 20,
-    lineHeight: 22,
-    fontWeight: "bold",
+    fontSize: 23,
+    fontFamily: "Inter_700Bold",
+    lineHeight: 25,
     letterSpacing: 0.5,
     color: "white",
   },
