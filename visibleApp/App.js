@@ -78,9 +78,9 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontFamily: "Inter_600SemiBold",
     letterSpacing: 0.5,
-    textShadowColor: "rgba(240, 243, 244, 0.13)",
-    textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 4,
+    textShadowColor: "rgba(21, 21, 21, 0.25)",
+    textShadowOffset: { width: 0, height: 2 },
+    textShadowRadius: 1,
   },
   signupHeaderStyle: {
     backgroundColor: "#1976D2",
@@ -93,9 +93,9 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontFamily: "Inter_600SemiBold",
     letterSpacing: 0.5,
-    textShadowColor: "rgba(240, 243, 244, 0.13)",
-    textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 4,
+    textShadowColor: "rgba(21, 21, 21, 0.25)",
+    textShadowOffset: { width: 0, height: 2 },
+    textShadowRadius: 1,
   },
 
 });
