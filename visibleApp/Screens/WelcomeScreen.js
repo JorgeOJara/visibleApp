@@ -85,11 +85,15 @@ const styles = StyleSheet.create({
     flex: 2,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: '20%',
+    marginTop: '20%', 
+    elevation: 10,
   },
+  
+
   visibleImage: {
     width: 175,
     height: 175,
+    resizeMode: 'cover'
   },
 
   welcomeContainer: {
@@ -111,7 +115,7 @@ const styles = StyleSheet.create({
   },
   textWelcome: {
     fontSize: 25,
-    lineHeight: 26,
+    lineHeight: 27,
     letterSpacing: 0.8,
     color: "white",
     fontFamily: "Inter_600SemiBold",
@@ -122,10 +126,13 @@ const styles = StyleSheet.create({
   textVisible: {
     margin: 5,
     fontSize: 35,
-    lineHeight: 35,
+    lineHeight: 37,
     letterSpacing: 0.7,
     color: "white",
-    fontFamily: "Inter_700Bold"
+    fontFamily: "Inter_700Bold",
+    textShadowRadius: 2,
+    textShadowOffset: { width: 1, height: 2 },
+
   },
 });
 export default WelcomeScreen;

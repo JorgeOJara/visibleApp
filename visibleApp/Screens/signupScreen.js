@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from 'axios';
-import { postData } from './funfuntion/logHandler';
+import axios from "axios";
+import { postData } from "./funfuntion/logHandler";
 import {
   View,
   Text,
@@ -10,8 +10,11 @@ import {
   ScrollView,
   KeyboardAvoidingView,
 } from "react-native";
-import { useFonts, Inter_700Bold, Inter_500Medium} from '@expo-google-fonts/inter';
-
+import {
+  useFonts,
+  Inter_700Bold,
+  Inter_500Medium,
+} from "@expo-google-fonts/inter";
 
 // Sign Up Screen
 const SignUpScreen = ({ navigation }) => {
@@ -42,7 +45,7 @@ const SignUpScreen = ({ navigation }) => {
       setIsLoading(true);
       const obj = { firstName, lastName, email, password };
 
-      var data = await postData("http://174.138.62.28:3000/signup",obj);
+      var data = await postData("http://174.138.62.28:3000/signup", obj);
 
       console.log("Signing up:", obj, data);
       // Navigate to another screen after successful signup
@@ -54,7 +57,8 @@ const SignUpScreen = ({ navigation }) => {
     }
   };
   let [fontsLoaded, fontError] = useFonts({
-    Inter_700Bold, Inter_500Medium
+    Inter_700Bold,
+    Inter_500Medium,
   });
   if (!fontsLoaded && !fontError) {
     return null;
@@ -97,35 +101,44 @@ const SignUpScreen = ({ navigation }) => {
             onChangeText={(text) => setPassword(text)}
             secureTextEntry
           />
-          <View style={styles.signupButton}>
-            {error ? <Text style={styles.errorText}>{error}</Text> : null}
-            <Pressable
-              title={isLoading ? "Signing Up..." : "Signup"}
-              style={signUpButtonStyle}
-              onPress={handleLogin}
-              onPressIn={signupPressIn}
-              onPressOut={signupPressOut}
-              disabled={isLoading}
-            >
-              <Text style={styles.textButton}>{"Submit"}</Text>
-            </Pressable>
-          </View>
+          <Text style={styles.textLogin}>Confirm Password</Text>
+          <TextInput
+            style={styles.textInput}
+            placeholder=""
+            //value={password}
+            //onChangeText={(text) => setPassword(text)}
+            secureTextEntry
+          />
         </View>
       </ScrollView>
+      <View style={styles.signupButton}>
+        {error ? <Text style={styles.errorText}>{error}</Text> : null}
+        <Pressable
+          title={isLoading ? "Signing Up..." : "Signup"}
+          style={signUpButtonStyle}
+          onPress={handleLogin}
+          onPressIn={signupPressIn}
+          onPressOut={signupPressOut}
+          disabled={isLoading}
+        >
+          <Text style={styles.textButton}>{"Submit"}</Text>
+        </Pressable>
+      </View>
     </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
   textLogin: {
-    fontSize: 22,
+    fontSize: 18,
     fontFamily: "Inter_500Medium",
     lineHeight: 22,
-    letterSpacing: 0.5,
     color: "white",
-    paddingBottom: 4,
+    paddingBottom: 2,
     textShadowOffset: { width: 1, height: 2 },
     textShadowRadius: 2,
+    marginTop: 20,
+    marginRight: "20%",
   },
 
   textInput: {
@@ -133,33 +146,36 @@ const styles = StyleSheet.create({
     lineHeight: 15,
     letterSpacing: 0.25,
     color: "white",
-    borderWidth: 0.5,
+    borderWidth: 1,
     borderBottomColor: "white",
     borderTopColor: "#263238",
     borderRightColor: "#263238",
     borderLeftColor: "#263238",
     marginBottom: 20,
-    padding: 6,
+    padding: 4,
     backgroundColor: "#263238",
     width: "75%",
   },
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
   },
   formContainer: {
     flex: 2,
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "flex-start",
     backgroundColor: "#263238",
     width: "100%",
     paddingLeft: "20%",
+    paddingTop: "5%",
   },
 
   signupButton: {
-    paddingVertical: 15,
-    width: "95%",
+    alignItems: "center",
+    backgroundColor: "#263238",
+    width: "100%",
+    paddingTop: 10,
   },
 
   contentscrollContainer: {
@@ -170,14 +186,13 @@ const styles = StyleSheet.create({
   },
 
   welcomeButtonContainer: {
-    marginVertical: 15,
+    marginBottom: "20%",
     alignItems: "center",
     justifyContent: "center",
     paddingVertical: 12,
-    paddingHorizontal: 32,
     borderRadius: 10,
     elevation: 3,
-    width: "80%",
+    width: "60%",
     shadowRadius: 2,
     shadowOffset: { width: 2, height: 2 },
   },
@@ -188,6 +203,8 @@ const styles = StyleSheet.create({
     lineHeight: 23,
     letterSpacing: 0.5,
     color: "white",
+    textShadowColor: "white",
+    textShadowRadius: 2,
   },
 });
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 import {
   View,
   Text,
@@ -7,10 +7,13 @@ import {
   StyleSheet,
   ScrollView,
   KeyboardAvoidingView,
-  Pressable
+  Pressable,
 } from "react-native";
-import { useFonts, Inter_700Bold, Inter_500Medium} from '@expo-google-fonts/inter';
-
+import {
+  useFonts,
+  Inter_700Bold,
+  Inter_500Medium,
+} from "@expo-google-fonts/inter";
 
 // Login Screen
 const LoginScreen = () => {
@@ -28,7 +31,7 @@ const LoginScreen = () => {
       ? "rgba(117, 117, 117, 0.95)"
       : "rgba(25, 118, 210, 99)",
   };
-  
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -37,9 +40,9 @@ const LoginScreen = () => {
     try {
       // Perform signup logic with form data (e.g., make an API call)
       setIsLoading(true);
-      const obj = {email, password };
+      const obj = { email, password };
 
-      var data = await postData("http://174.138.62.28:3000/login",obj);
+      var data = await postData("http://174.138.62.28:3000/login", obj);
 
       console.log("Logging In:", obj, data);
       // Navigate to another screen after successful signup
@@ -51,12 +54,13 @@ const LoginScreen = () => {
     }
   };
   let [fontsLoaded, fontError] = useFonts({
-    Inter_700Bold, Inter_500Medium
+    Inter_700Bold,
+    Inter_500Medium,
   });
   if (!fontsLoaded && !fontError) {
     return null;
   }
-  
+
   return (
     <KeyboardAvoidingView
       style={styles.container}
@@ -76,6 +80,7 @@ const LoginScreen = () => {
             onChangeText={(text) => setEmail(text)}
             keyboardType="email-address"
           />
+
           <Text style={styles.textLogin}>Password</Text>
           <TextInput
             style={styles.textInput}
@@ -86,7 +91,7 @@ const LoginScreen = () => {
           />
           <View style={styles.loginButton}>
             {error ? <Text>{error}</Text> : null}
-            
+
             <Pressable
               title={isLoading ? "Logging In..." : "Login"}
               style={loginButtonStyle}
@@ -122,7 +127,7 @@ const styles = StyleSheet.create({
   },
 
   textLogin: {
-    fontSize: 22,
+    fontSize: 20,
     fontFamily: "Inter_500Medium",
     lineHeight: 22,
     letterSpacing: 0.5,
@@ -130,6 +135,7 @@ const styles = StyleSheet.create({
     paddingBottom: 4,
     textShadowOffset: { width: 1, height: 2 },
     textShadowRadius: 2,
+    marginTop: 20,
   },
 
   textInput: {
@@ -146,6 +152,7 @@ const styles = StyleSheet.create({
     padding: 6,
     backgroundColor: "#263238",
     width: "75%",
+    
   },
   formContainer: {
     flex: 2,
@@ -159,7 +166,6 @@ const styles = StyleSheet.create({
   loginButton: {
     paddingVertical: 35,
     width: "95%",
-
   },
   contentscrollContainer: {
     flexGrow: 1,
@@ -180,14 +186,24 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 2 },
   },
 
+  inputContainer: {
+    marginVertical: 15,
+    alignItems: "center",
+    justifyContent: "center",
+    width: "80%",
+    shadowRadius: 2,
+    shadowOffset: { width: 2, height: 2 },
+  },
+
   textButton: {
     fontSize: 23,
     fontFamily: "Inter_700Bold",
     lineHeight: 25,
     letterSpacing: 0.5,
     color: "white",
+    textShadowColor: "white",
+    textShadowRadius: 2,
   },
-
 });
 
 export default LoginScreen;
