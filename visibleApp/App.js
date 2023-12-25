@@ -1,23 +1,24 @@
+//React & Expo
 import React from "react";
 import {StyleSheet} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { useFonts, Inter_600SemiBold } from '@expo-google-fonts/inter';
 
-
 ///screens 
 import LoginScreen from "../visibleApp/Screens/LoginScreen";
 import SignUpScreen from "../visibleApp/Screens/signupScreen";
 import WelcomeScreen from "./Screens/WelcomeScreen";
+
 //// Ajax Tool
 import axios from 'axios';
-
 
 // Stack Navigator
 const Stack = createStackNavigator();
 
 // App Component
 function App() {
+  //Load Fonts
   let [fontsLoaded, fontError] = useFonts({
     Inter_600SemiBold,
   });

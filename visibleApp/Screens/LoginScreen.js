@@ -17,6 +17,8 @@ import {
 
 // Login Screen
 const LoginScreen = () => {
+  
+  //Button state handler
   const [isLoginPressed, setLoginPressed] = useState(false);
   const loginPressIn = () => {
     setLoginPressed(true);
@@ -24,7 +26,7 @@ const LoginScreen = () => {
   const loginPressOut = () => {
     setLoginPressed(false);
   };
-
+  //Button state style handlerr
   const loginButtonStyle = {
     ...styles.welcomeButtonContainer,
     backgroundColor: isLoginPressed
@@ -32,6 +34,7 @@ const LoginScreen = () => {
       : "rgba(25, 118, 210, 99)",
   };
 
+  //Input state handlers to capture date when submit button is pressed
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -45,7 +48,8 @@ const LoginScreen = () => {
       var data = await postData("http://174.138.62.28:3000/login", obj);
 
       console.log("Logging In:", obj, data);
-      // Navigate to another screen after successful signup
+      //Send information to server for validations
+      //Navigate to another screen after successful signup
     } catch (error) {
       console.error("Error signing up:", error.message);
       setError("Sign up failed. Please try again.");
@@ -53,6 +57,7 @@ const LoginScreen = () => {
       setIsLoading(false);
     }
   };
+  //Load fonts
   let [fontsLoaded, fontError] = useFonts({
     Inter_700Bold,
     Inter_500Medium,
@@ -108,7 +113,7 @@ const LoginScreen = () => {
     </KeyboardAvoidingView>
   );
 };
-//Data
+//Function to send/receive data to/from server
 async function postData(url, obj) {
   try {
     const response = await axios.post(url, obj);

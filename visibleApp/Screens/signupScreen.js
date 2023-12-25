@@ -18,6 +18,7 @@ import {
 
 // Sign Up Screen
 const SignUpScreen = ({ navigation }) => {
+  //Button state handler
   const [isSignUpPressed, setSignUpPressed] = useState(false);
   const signupPressIn = () => {
     setSignUpPressed(true);
@@ -26,13 +27,15 @@ const SignUpScreen = ({ navigation }) => {
   const signupPressOut = () => {
     setSignUpPressed(false);
   };
+
+  //Button state style handler
   const signUpButtonStyle = {
     ...styles.welcomeButtonContainer,
     backgroundColor: isSignUpPressed
       ? "rgba(117, 117, 117, 0.95)"
       : "rgba(25, 118, 210, 99)",
   };
-
+  //Input state handlers to capture date when submit button is pressed
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -48,7 +51,8 @@ const SignUpScreen = ({ navigation }) => {
       var data = await postData("http://174.138.62.28:3000/signup", obj);
 
       console.log("Signing up:", obj, data);
-      // Navigate to another screen after successful signup
+      //Send information to server for validations
+      //Navigate to another screen after successful signup
     } catch (error) {
       console.error("Error signing up:", error.message);
       setError("Sign up failed. Please try again.");
@@ -56,6 +60,8 @@ const SignUpScreen = ({ navigation }) => {
       setIsLoading(false);
     }
   };
+
+  //Load fonts
   let [fontsLoaded, fontError] = useFonts({
     Inter_700Bold,
     Inter_500Medium,
