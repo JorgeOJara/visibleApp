@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     margin: 5,
     fontSize: 35,
     lineHeight: 37,
-    letterSpacing: 0.7,
+    letterSpacing: 0.5,
     color: "white",
     fontFamily: "Inter_700Bold",
     textShadowRadius: 2,
