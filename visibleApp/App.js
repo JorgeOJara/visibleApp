@@ -10,6 +10,10 @@ import LoginScreen from "../visibleApp/Screens/LoginScreen";
 import SignUpScreen from "../visibleApp/Screens/signupScreen";
 import WelcomeScreen from "./Screens/WelcomeScreen";
 
+
+/// if loging, response its equal true send back to home page
+import HomeScreen from "./Screens/homsScreen";
+
 //// Ajax Tool
 import axios from 'axios';
 
